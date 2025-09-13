@@ -49,6 +49,7 @@ export interface ResumeSection {
   editorType?: 'timeline' | 'list' | 'text';
   visible: boolean;
   order: number;
+  dateFormat?: 'zh-full' | 'zh-month' | 'dash-full' | 'dash-month' | 'dot-full' | 'dot-month';
   data: BasicInfo | TimelineItem[] | ListItem[] | TextContent | Record<string, unknown>;
 }
 

@@ -18,6 +18,11 @@ const SectionManagerPage = React.lazy(() =>
   import('./pages/SectionManagerPage').then((module) => ({ default: module.SectionManagerPage }))
 );
 
+// 懒加载编辑器页面
+const EditorPage = React.lazy(() =>
+  import('./pages/EditorPage').then((module) => ({ default: module.EditorPage }))
+);
+
 function App() {
   return (
     <Provider>
@@ -45,6 +50,14 @@ function App() {
             element={
               <Suspense fallback={null}>
                 <SectionManagerPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/editor/:type/:sectionId"
+            element={
+              <Suspense fallback={null}>
+                <EditorPage />
               </Suspense>
             }
           />

@@ -13,6 +13,7 @@ import {
   updateSectionsOrderAtom,
 } from '@/store/resumeStore';
 import type { BasicInfo, ListItem, TextContent, TimelineItem } from '@/types/resume';
+import type { DateFormat } from '@/lib/dateUtils';
 import { useAtomValue, useSetAtom } from 'jotai';
 
 /**
@@ -37,9 +38,10 @@ export const useResumeActions = () => {
   const updateSection = (
     sectionId: string,
     data: BasicInfo | TimelineItem[] | ListItem[] | TextContent,
-    iconName?: string
+    iconName?: string,
+    dateFormat?: DateFormat
   ) => {
-    updateSectionData({ sectionId, data, iconName });
+    updateSectionData({ sectionId, data, iconName, dateFormat });
   };
 
   /**

@@ -1,8 +1,7 @@
 /**
- * 基础信息编辑器 - 自动保存版本
+ * 基础信息编辑器面板 - 左编辑右预览版本
  */
 import { Button } from '@/components/ui/base/button.tsx';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/base/dialog.tsx';
 import { Label } from '@/components/ui/base/label.tsx';
 import { useAutoSaveDialog } from '@/hooks/useAutoSaveDialog';
 import type { BasicInfo, CustomField } from '@/types/resume';
@@ -14,14 +13,15 @@ import { AvatarUpload } from '../avatar/AvatarUpload';
 import { BasicInfoCustomFieldItem } from './BasicInfoCustomFieldItem';
 import { BasicInfoFieldItem } from './BasicInfoFieldItem';
 
-interface BasicInfoEditorProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface BasicInfoEditorPanelProps {
   initialData: BasicInfo;
   onSave: (data: BasicInfo) => void;
 }
 
-export const BasicInfoEditor = ({ isOpen, onClose, initialData, onSave }: BasicInfoEditorProps) => {
+export const BasicInfoEditorPanel = ({ 
+  initialData, 
+  onSave,
+}: BasicInfoEditorPanelProps) => {
   // 配置拖拽传感器
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -31,17 +31,15 @@ export const BasicInfoEditor = ({ isOpen, onClose, initialData, onSave }: BasicI
     })
   );
 
-  // 使用通用的自动保存对话框 Hook
+  // 使用通用的自动保存对话框 Hook，但不需要Dialog相关的功能
   const {
     data: formData,
     setData: setFormData,
-    handleClose,
-    saveStatusText,
   } = useAutoSaveDialog<BasicInfo>({
-    isOpen,
+    isOpen: true, // 始终为true，因为面板始终显示
     initialData: { ...initialData, customFields: initialData.customFields || [] },
     onSave,
-    onClose,
+    onClose: () => {}, // 面板形式不需要关闭
     debounceDelay: 300,
   });
 
@@ -124,15 +122,21 @@ export const BasicInfoEditor = ({ isOpen, onClose, initialData, onSave }: BasicI
   ] as const;
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-        <DialogTitle className="text-xl font-semibold text-gray-800 flex items-center space-x-3">
-          <span>编辑基本信息</span>
-          <span className="text-sm font-normal text-gray-500 mr-auto pl-3">{saveStatusText}</span>
-        </DialogTitle>
-        <DialogDescription>
-          编辑个人基本信息，包括姓名、联系方式等，所有更改将自动保存。
-        </DialogDescription>
+    <div className="h-full flex flex-col">
+      {/* 头部 */}
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">
+            编辑基本信息
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">
+            编辑个人基本信息，包括姓名、联系方式等，所有更改将自动保存。
+          </p>
+        </div>
+      </div>
+
+      {/* 编辑内容 */}
+      <div className="flex-1 overflow-y-auto p-6">
         <div className="space-y-6">
           <div className="space-y-2">
             <Label>头像</Label>
@@ -191,7 +195,7 @@ export const BasicInfoEditor = ({ isOpen, onClose, initialData, onSave }: BasicI
             )}
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </div>
   );
 };

@@ -1,62 +1,73 @@
 /**
- * 时间线编辑器 - 自动保存版本
+ * 时间线编辑器面板 - 左编辑右预览版本
  */
 import { IconPicker } from '@/components/ui/advanced/IconPicker.tsx';
 import { Button } from '@/components/ui/base/button.tsx';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/base/dialog.tsx';
 import { useTimelineEditor } from '@/hooks/components/useTimelineEditor';
 import type { TimelineItem as TimelineItemType } from '@/types/resume';
+import type { DateFormat } from '@/lib/dateUtils';
 import { DndContext } from '@dnd-kit/core';
 import { SortableContext } from '@dnd-kit/sortable';
 import { GripVertical, Plus } from 'lucide-react';
 import { TimelineEditorItem } from './TimelineEditorItem';
+import { useState, useEffect } from 'react';
 
-interface TimelineEditorProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface TimelineEditorPanelProps {
   initialData: TimelineItemType[];
-  onSave: (data: TimelineItemType[], iconName?: string) => void;
+  onSave: (data: TimelineItemType[], iconName?: string, dateFormat?: DateFormat) => void;
   title: string;
   currentIcon?: string;
+  initialDateFormat?: DateFormat;
 }
 
-export const TimelineEditor = ({
-  isOpen,
-  onClose,
+export const TimelineEditorPanel = ({
   initialData,
   onSave,
   title,
   currentIcon = 'briefcase',
-}: TimelineEditorProps) => {
+  initialDateFormat = 'dash-month',
+}: TimelineEditorPanelProps) => {
+  // 日期格式状态
+  const [dateFormat, setDateFormat] = useState<DateFormat>(initialDateFormat);
+
+  // 包装 onSave 函数以包含日期格式
+  const handleSave = (data: TimelineItemType[], iconName?: string) => {
+    onSave(data, iconName, dateFormat);
+  };
+
   const {
     items,
     selectedIcon,
-    saveStatusText,
     dragConfig,
     addItem,
     removeItem,
     updateItem,
     setSelectedIcon,
-    handleClose,
-  } = useTimelineEditor(isOpen, initialData, currentIcon, onSave, onClose);
+  } = useTimelineEditor(true, initialData, currentIcon, handleSave, () => {});
+
+  // 当日期格式改变时，触发保存
+  useEffect(() => {
+    if (dateFormat !== initialDateFormat) {
+      handleSave(items, selectedIcon);
+    }
+  }, [dateFormat]);
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-xl font-semibold text-gray-800 flex items-center space-x-3">
-            <span>编辑{title}</span>
-            <span className="text-sm font-normal text-gray-500 mr-auto pl-3">{saveStatusText}</span>
-          </DialogTitle>
-          <DialogDescription>在此处编辑您的{title}信息，所有更改将自动保存。</DialogDescription>
-        </DialogHeader>
+    <div className="h-full flex flex-col">
+      {/* 头部 */}
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">
+            编辑{title}
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">
+            在此处编辑您的{title}信息，所有更改将自动保存。
+          </p>
+        </div>
+      </div>
 
+      {/* 编辑内容 */}
+      <div className="flex-1 overflow-y-auto p-6">
         <div className="space-y-6">
           {/* 图标选择区域 */}
           <IconPicker value={selectedIcon} onChange={setSelectedIcon} label="图标" />
@@ -78,6 +89,8 @@ export const TimelineEditor = ({
                         index={index}
                         onUpdate={updateItem}
                         onRemove={removeItem}
+                        dateFormat={dateFormat}
+                        onDateFormatChange={setDateFormat}
                       />
                     ))}
                   </div>
@@ -96,7 +109,7 @@ export const TimelineEditor = ({
             添加一项
           </Button>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </div>
   );
 };

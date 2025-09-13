@@ -4,6 +4,7 @@
  */
 import { useResumeActions } from '@/hooks/useResumeActions';
 import type { BasicInfo, ListItem, TextContent, TimelineItem } from '@/types/resume';
+import type { DateFormat } from '@/lib/dateUtils';
 
 /**
  * 为 Resume 编辑器提供统一的状态管理集成
@@ -14,8 +15,8 @@ export const useResumeEditor = (sectionId: string) => {
   /**
    * 处理时间线编辑器的保存
    */
-  const handleTimelineSave = (data: TimelineItem[], iconName?: string) => {
-    updateSection(sectionId, data, iconName);
+  const handleTimelineSave = (data: TimelineItem[], iconName?: string, dateFormat?: DateFormat) => {
+    updateSection(sectionId, data, iconName, dateFormat);
   };
 
   /**

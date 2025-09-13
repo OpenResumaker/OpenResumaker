@@ -1,15 +1,8 @@
 /**
- * 列表编辑器 - 自动保存版本
+ * 列表编辑器面板 - 左编辑右预览版本
  */
 import { IconPicker } from '@/components/ui/advanced/IconPicker.tsx';
 import { Button } from '@/components/ui/base/button.tsx';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/base/dialog.tsx';
 import { useListEditor } from '@/hooks/components/useListEditor';
 import type { ListItem as ListItemType } from '@/types/resume';
 import { DndContext } from '@dnd-kit/core';
@@ -17,46 +10,45 @@ import { SortableContext } from '@dnd-kit/sortable';
 import { GripVertical, Plus } from 'lucide-react';
 import { ListEditorItem } from './ListEditorItem';
 
-interface ListEditorProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface ListEditorPanelProps {
   initialData: ListItemType[];
   onSave: (data: ListItemType[], iconName?: string) => void;
   title: string;
   currentIcon: string;
 }
 
-export const ListEditor = ({
-  isOpen,
-  onClose,
+export const ListEditorPanel = ({
   initialData,
   onSave,
   title,
   currentIcon,
-}: ListEditorProps) => {
+}: ListEditorPanelProps) => {
   const {
     items,
     selectedIcon,
-    saveStatusText,
     dragConfig,
     addItem,
     removeItem,
     updateItem,
     setSelectedIcon,
-    handleClose,
-  } = useListEditor(isOpen, initialData, currentIcon, onSave, onClose);
+  } = useListEditor(true, initialData, currentIcon, onSave, () => {});
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-xl font-semibold text-gray-800 flex items-center space-x-3">
-            <span>编辑{title}</span>
-            <span className="text-sm font-normal text-gray-500 mr-auto pl-3">{saveStatusText}</span>
-          </DialogTitle>
-          <DialogDescription>在此处编辑您的{title}信息，所有更改将自动保存。</DialogDescription>
-        </DialogHeader>
+    <div className="h-full flex flex-col">
+      {/* 头部 */}
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">
+            编辑{title}
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">
+            在此处编辑您的{title}信息，所有更改将自动保存。
+          </p>
+        </div>
+      </div>
 
+      {/* 编辑内容 */}
+      <div className="flex-1 overflow-y-auto p-6">
         <div className="space-y-6">
           {/* 模块图标选择 */}
           <IconPicker value={selectedIcon} onChange={setSelectedIcon} label="图标" />
@@ -111,7 +103,7 @@ export const ListEditor = ({
             </ul>
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </div>
   );
 };

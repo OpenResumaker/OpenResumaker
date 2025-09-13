@@ -2,6 +2,7 @@
  * 可复用的内容渲染组件
  */
 import type { ListItem, TextContent, TimelineItem } from '@/types/resume';
+import { formatDateDisplay, type DateFormat } from '@/lib/dateUtils';
 
 interface ListContentProps {
   data: ListItem[];
@@ -23,9 +24,11 @@ export const ListContent = ({ data }: ListContentProps) => (
 
 interface TimelineContentProps {
   data: TimelineItem[];
+  dateFormat?: DateFormat;
 }
 
-export const TimelineContent = ({ data }: TimelineContentProps) => (
+
+export const TimelineContent = ({ data, dateFormat }: TimelineContentProps) => (
   <div className="space-y-4 print:space-y-3">
     {data.map((item) => (
       <div key={item.id} className="relative">
@@ -41,7 +44,7 @@ export const TimelineContent = ({ data }: TimelineContentProps) => (
           </div>
           {(item.startDate || item.endDate) && (
             <div className="text-sm text-gray-600 ml-4 shrink-0">
-              {item.startDate} {item.startDate && item.endDate && '-'} {item.endDate}
+              {formatDateDisplay(item.startDate || '', dateFormat || 'dash-month')} {item.startDate && item.endDate && '-'} {formatDateDisplay(item.endDate || '', dateFormat || 'dash-month')}
             </div>
           )}
         </div>

@@ -5,6 +5,7 @@ import type {
   TextContent,
   TimelineItem,
 } from '@/types/resume';
+import type { DateFormat } from '@/lib/dateUtils';
 import { atom } from 'jotai';
 import { currentResumeAtom, initialResume } from './resumeCollectionStore';
 
@@ -30,6 +31,7 @@ export const updateSectionDataAtom = atom(
       sectionId: string;
       data: BasicInfo | TimelineItem[] | ListItem[] | TextContent;
       iconName?: string;
+      dateFormat?: DateFormat;
     }
   ) => {
     const resume = get(resumeAtom);
@@ -41,6 +43,9 @@ export const updateSectionDataAtom = atom(
           ...(update.iconName !== undefined && {
             iconName: update.iconName,
             icon: update.iconName,
+          }),
+          ...(update.dateFormat !== undefined && {
+            dateFormat: update.dateFormat,
           }),
         };
       }

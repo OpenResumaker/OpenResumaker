@@ -1,56 +1,50 @@
+/**
+ * 文本编辑器面板 - 左编辑右预览版本
+ */
 import { IconPicker } from '@/components/ui/advanced/IconPicker.tsx';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/base/dialog.tsx';
 import { Textarea } from '@/components/ui/base/textarea.tsx';
 import { useTextEditor } from '@/hooks/components/useTextEditor';
 
-interface TextEditorProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface TextEditorPanelProps {
   title: string;
   initialData: { content: string };
   onSave: (data: { content: string }, iconName?: string) => void;
   selectedIcon: string;
-  iconEnabled: boolean;
 }
 
-export const TextEditor = ({
-  isOpen,
-  onClose,
+export const TextEditorPanel = ({
   title,
   initialData,
   onSave,
   selectedIcon: initialIcon,
-}: TextEditorProps) => {
+}: TextEditorPanelProps) => {
   const {
     content,
     selectedIcon,
     iconEnabled,
-    saveStatusText,
     wordCount,
     lineCount,
     setContent,
     setSelectedIcon,
     setIconEnabled,
-    handleClose,
-  } = useTextEditor(isOpen, initialData, initialIcon, onSave, onClose);
+  } = useTextEditor(true, initialData, initialIcon, onSave, () => {});
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="flex items-center">
-            编辑 {title}
-            <span className="text-sm font-normal text-gray-500 mr-auto pl-3">{saveStatusText}</span>
-          </DialogTitle>
-          <DialogDescription>在此处编辑您的{title}信息，所有更改将自动保存。</DialogDescription>
-        </DialogHeader>
+    <div className="h-full flex flex-col">
+      {/* 头部 */}
+      <div className="px-6 py-4 border-b border-gray-200">
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">
+            编辑{title}
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">
+            在此处编辑您的{title}信息，所有更改将自动保存。
+          </p>
+        </div>
+      </div>
 
+      {/* 编辑内容 */}
+      <div className="flex-1 overflow-y-auto p-6">
         <div className="space-y-6">
           {/* 模块图标选择 */}
           <div className="space-y-3">
@@ -89,11 +83,11 @@ export const TextEditor = ({
               value={content}
               onChange={(value) => setContent(value)}
               placeholder="请输入内容..."
-              className="min-h-[200px] resize-y"
+              className="min-h-[300px] resize-y"
             />
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </div>
   );
 };

@@ -1,11 +1,11 @@
 /**
  * 基本信息区域 - 简洁版本
  */
-import { BasicInfoEditor } from '@/components/editors';
 import { Button } from '@/components/ui/base/button.tsx';
 import { useBasicInfoSection } from '@/hooks/components/useBasicInfoSection';
 import type { BasicInfo, ResumeSection } from '@/types/resume';
 import { Edit3, Mail, Phone, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { AvatarDisplay } from '../avatar/AvatarDisplay';
 import { BasicInfoSectionItem } from './BasicInfoSectionItem';
 
@@ -16,16 +16,17 @@ interface BasicInfoSectionProps {
 
 export const BasicInfoSection = ({ section, isEditable }: BasicInfoSectionProps) => {
   const data = section.data as BasicInfo;
+  const navigate = useNavigate();
 
   const {
-    isEditing,
-    startEditing,
-    closeEditing,
-    handleSave,
     formatGenderAge,
     formatCustomFields,
     hasValue,
   } = useBasicInfoSection(section.id);
+
+  const handleEdit = () => {
+    navigate(`/editor/basic-info/${section.id}`);
+  };
 
   return (
     <>
@@ -37,7 +38,7 @@ export const BasicInfoSection = ({ section, isEditable }: BasicInfoSectionProps)
             variant="ghost"
             size="icon"
             className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-gray-100 h-8 w-8 print:hidden z-20"
-            onClick={startEditing}
+            onClick={handleEdit}
           >
             <Edit3 className="h-4 w-4 text-gray-600" />
           </Button>
@@ -86,16 +87,6 @@ export const BasicInfoSection = ({ section, isEditable }: BasicInfoSectionProps)
           </div>
         </div>
       </div>
-
-      {/* 编辑器 */}
-      {isEditing && (
-        <BasicInfoEditor
-          isOpen={true}
-          onClose={closeEditing}
-          initialData={data}
-          onSave={handleSave}
-        />
-      )}
     </>
   );
 };

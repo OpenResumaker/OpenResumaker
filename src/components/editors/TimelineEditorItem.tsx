@@ -4,7 +4,10 @@
 import { Button } from '@/components/ui/base/button.tsx';
 import { Input } from '@/components/ui/base/input.tsx';
 import { Label } from '@/components/ui/base/label.tsx';
+import { Select } from '@/components/ui/base/select.tsx';
 import { Textarea } from '@/components/ui/base/textarea.tsx';
+import { DatePicker } from '@/components/ui/base/date-picker.tsx';
+import { type DateFormat, DATE_FORMATS } from '@/lib/dateUtils';
 import type { TimelineItem as TimelineItemType } from '@/types/resume';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -15,6 +18,8 @@ interface TimelineEditorItemProps {
   index: number;
   onUpdate: (id: string, field: keyof TimelineItemType, value: string) => void;
   onRemove: (id: string) => void;
+  dateFormat: DateFormat;
+  onDateFormatChange: (format: DateFormat) => void;
 }
 
 export const TimelineEditorItem = ({
@@ -22,11 +27,14 @@ export const TimelineEditorItem = ({
   index,
   onUpdate,
   onRemove,
+  dateFormat,
+  onDateFormatChange,
 }: TimelineEditorItemProps) => {
   // 使用 useSortable hook
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: item.id,
   });
+
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -83,23 +91,33 @@ export const TimelineEditorItem = ({
           />
         </div>
 
-        <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">开始时间</Label>
-          <Input
-            value={item.startDate || ''}
-            onChange={(e) => onUpdate(item.id, 'startDate', e.target.value)}
-            placeholder="例：2020年9月"
-            className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
+        <div className="md:col-span-2 space-y-2">
+          <Label className="text-sm font-medium text-gray-700">日期格式</Label>
+          <Select
+            value={dateFormat}
+            onValueChange={(value) => onDateFormatChange(value as DateFormat)}
+            options={DATE_FORMATS.map(f => ({ value: f.value, label: f.label }))}
+            className="text-sm"
           />
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">结束时间</Label>
-          <Input
+          <DatePicker
+            value={item.startDate || ''}
+            onChange={(value) => onUpdate(item.id, 'startDate', value)}
+            label="开始时间"
+            format={dateFormat}
+            showFormatSelector={false}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <DatePicker
             value={item.endDate || ''}
-            onChange={(e) => onUpdate(item.id, 'endDate', e.target.value)}
-            placeholder="例：2024年6月"
-            className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
+            onChange={(value) => onUpdate(item.id, 'endDate', value)}
+            label="结束时间"
+            format={dateFormat}
+            showFormatSelector={false}
           />
         </div>
 
