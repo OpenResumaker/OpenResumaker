@@ -2,7 +2,7 @@
 
 本项目基于 [resumaker](https://github.com/WhiteP1ay/resumaker) 扩展而来，在原项目的基础上新增了一些致力于用户体验优化的特性和功能。
 
-纯前端项目，没有登录注册、信息收集，也没有收费项目。
+纯前端项目，没有登录注册、信息收集，更没有收费功能。主打一个简明易用！
 
 ![License](https://img.shields.io/badge/license-GPL-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)
