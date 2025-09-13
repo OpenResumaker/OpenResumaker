@@ -1,5 +1,5 @@
 /**
- * 通用编辑器容器 - 左编辑，右预览布局
+ * 通用编辑器容器 - 响应式布局：大屏左右分栏，小屏上下布局
  */
 import { Button } from '@/components/ui/base/button.tsx';
 import { ArrowLeft } from 'lucide-react';
@@ -64,15 +64,15 @@ export const EditorContainer = ({
         </div>
       </div>
 
-      {/* 主体内容 - 左编辑右预览 */}
-      <div className="flex h-[calc(100vh-80px)]">
-        {/* 左侧编辑面板 */}
-        <div className="w-1/2 border-r border-gray-200 bg-white overflow-y-auto">
+      {/* 响应式布局：大屏左右分栏，小屏上下布局 */}
+      <div className="flex flex-col lg:flex-row h-[calc(100vh-80px)]">
+        {/* 编辑面板 */}
+        <div className="w-full lg:w-1/2 border-b lg:border-b-0 lg:border-r border-gray-200 bg-white h-1/2 lg:h-full overflow-y-auto">
           {editorPanel}
         </div>
 
-        {/* 右侧预览面板 */}
-        <div className="w-1/2 bg-gray-50 overflow-y-auto">
+        {/* 预览面板 */}
+        <div className="w-full lg:w-1/2 bg-gray-50 h-1/2 lg:h-full overflow-y-auto">
           {previewPanel}
         </div>
       </div>

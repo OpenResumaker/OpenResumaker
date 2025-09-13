@@ -58,6 +58,57 @@
   }
 }
 
+/* 响应式布局优化 */
+@media (max-width: 1023px) {
+  /* 上下布局时的优化 */
+  .vertical-layout-preview {
+    font-size: 0.9em;
+  }
+  
+  /* 触摸优化 */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* 滚动优化 */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* 防止缩放 */
+  .no-zoom {
+    touch-action: manipulation;
+  }
+  
+  /* 上下布局时的分隔线 */
+  .vertical-divider {
+    border-bottom: 1px solid #e5e7eb;
+    border-right: none;
+  }
+}
+
+/* 平板和小屏幕优化 */
+@media (max-width: 768px) {
+  .vertical-layout-preview {
+    font-size: 0.85em;
+  }
+}
+
+/* 小屏幕手机优化 */
+@media (max-width: 480px) {
+  .vertical-layout-preview {
+    font-size: 0.8em;
+  }
+  
+  /* 更紧凑的间距 */
+  .compact-mobile {
+    padding: 0.5rem;
+    margin: 0.25rem;
+  }
+}
+
 @media print {
   @page {
     margin: 1cm;
