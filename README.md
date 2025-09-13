@@ -6,7 +6,7 @@
 
 ![License](https://img.shields.io/badge/license-GPL-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)
-![React](https://img.shields.io/badge/React-19.1-blue.svg)
+![React](https://img.shields.io/badge/React-18.3-blue.svg)
 ![Vite](https://img.shields.io/badge/Vite-7.0-646CFF.svg)
 
 ## 🚀 快速开始
