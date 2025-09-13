@@ -51,11 +51,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           style={{
             minHeight: '80px',
           }}
-          className={cn(
-            'rounded-md border border-input bg-background outline-none',
-            'focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
-            readOnly && 'opacity-50 cursor-not-allowed'
-          )}
         />
       </div>
     );
