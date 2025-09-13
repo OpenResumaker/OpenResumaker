@@ -5,7 +5,7 @@ import { Button } from './button';
 import { Input } from './input';
 import { Label } from './label';
 import { Select } from './select';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { 
   DATE_FORMATS, 
   type DateFormat, 
@@ -72,15 +72,22 @@ export const DatePicker = ({
       setMonth('');
       setDay('');
     }
-  }, [value]);
+  }, [value, onChange]);
 
   // 当年月日改变时，组合成 ISO 格式并通知父组件
-  useEffect(() => {
+  const handleDatePartsChange = useCallback(() => {
     const isoDate = combineToISODate(year, month, day, currentFormatConfig.hasDay);
     if (isoDate !== value) {
       onChange(isoDate);
     }
-  }, [year, month, day, currentFormatConfig.hasDay]);
+  }, [year, month, day, currentFormatConfig.hasDay, value, onChange]);
+
+  useEffect(() => {
+    // 只有当year或month有值时才触发更新，避免空值时的无限循环
+    if (year || month || day) {
+      handleDatePartsChange();
+    }
+  }, [year, month, day, currentFormatConfig.hasDay, handleDatePartsChange]);
 
   const handleFormatChange = (newFormat: string) => {
     const format = newFormat as DateFormat;
@@ -88,12 +95,12 @@ export const DatePicker = ({
     onFormatChange?.(format);
   };
 
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     setYear('');
     setMonth('');
     setDay('');
     onChange('');
-  };
+  }, [onChange]);
 
 
   // 获取预览显示

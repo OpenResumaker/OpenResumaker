@@ -13,49 +13,49 @@ interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaEl
   formats?: string[];
 }
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({
-    className,
-    value = '',
-    onChange,
-    placeholder = '请输入内容...',
-    readOnly = false,
-    theme = 'snow',
-    modules,
-    formats
-  }) => {
-    const defaultModules = React.useMemo(() => ({
-      toolbar: [
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ 'color': [] }, { 'background': [] }],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        ['clean']
-      ],
-    }), []);
+// 将默认配置移到组件外部，避免每次渲染都重新创建
+const defaultModules = {
+  toolbar: [
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ 'color': [] }, { 'background': [] }],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    ['clean']
+  ],
+};
 
-    const defaultFormats = [
-       'bold', 'italic', 'underline', 'strike',
-      'color', 'background', 'list', 'bullet'
-    ];
+const defaultFormats = [
+  'bold', 'italic', 'underline', 'strike',
+  'color', 'background', 'list', 'bullet'
+];
 
-    return (
-      <div className={cn('w-full', className)}>
-        <ReactQuill
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          theme={theme}
-          modules={modules || defaultModules}
-          formats={formats || defaultFormats}
-          style={{
-            minHeight: '80px',
-          }}
-        />
-      </div>
-    );
-  }
-);
+const Textarea = React.memo(({
+  className,
+  value = '',
+  onChange,
+  placeholder = '请输入内容...',
+  readOnly = false,
+  theme = 'snow',
+  modules,
+  formats
+}: TextareaProps) => {
+
+  return (
+    <div className={cn('w-full', className)}>
+      <ReactQuill
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        theme={theme}
+        modules={modules || defaultModules}
+        formats={formats || defaultFormats}
+        style={{
+          minHeight: '80px',
+        }}
+      />
+    </div>
+  );
+});
 
 Textarea.displayName = 'Textarea';
 
