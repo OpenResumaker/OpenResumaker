@@ -1,8 +1,8 @@
 /**
  * 预设图标选择器 - 替换自选图标功能，提升性能
  */
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
 import {
   Award,
   Book,

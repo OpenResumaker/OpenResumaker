@@ -1,15 +1,15 @@
 /**
  * 列表编辑器 - 自动保存版本
  */
-import { IconPicker } from '@/components/IconPicker';
-import { Button } from '@/components/ui/button';
+import { IconPicker } from '@/components/ui/advanced/IconPicker.tsx';
+import { Button } from '@/components/ui/base/button.tsx';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from '@/components/ui/base/dialog.tsx';
 import { useListEditor } from '@/hooks/components/useListEditor';
 import type { ListItem as ListItemType } from '@/types/resume';
 import { DndContext } from '@dnd-kit/core';

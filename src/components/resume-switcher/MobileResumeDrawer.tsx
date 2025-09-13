@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button.tsx';
-import { Input } from '@/components/ui/input.tsx';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
 import { useResumeManager } from '@/hooks/useResumeManager.ts';
 import { FileText, Menu, Plus, Search, X } from 'lucide-react';
 import MiniSearch from 'minisearch';

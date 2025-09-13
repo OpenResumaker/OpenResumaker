@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
 import { useSectionManager } from '@/hooks/components/useSectionManager';
 import { DndContext } from '@dnd-kit/core';
 import { SortableContext } from '@dnd-kit/sortable';

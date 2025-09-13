@@ -1,8 +1,8 @@
-import { AppHeader } from '@/components/layout/AppHeader';
-import { AppFooter } from '@/components/layout/AppFooter';
+import { AppHeader } from '@/components/page-layout/AppHeader';
+import { AppFooter } from '@/components/page-layout/AppFooter';
 import { SectionEditorPanel } from '@/components/section-manager/SectionEditorPanel';
 import { ResumePreviewPanel } from '@/components/section-manager/ResumePreviewPanel';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import { ArrowLeft, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 

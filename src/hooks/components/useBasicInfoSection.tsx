@@ -2,7 +2,7 @@
  * 基本信息组件业务逻辑 Hook - 优化版本
  * 直接使用状态管理，无需层层传递回调函数
  */
-import { IconRenderer } from '@/components/IconPicker';
+import { IconRenderer } from '@/components/ui/advanced/IconPicker.tsx';
 import { useResumeEditor } from '@/hooks/components/useResumeEditor';
 import type { BasicInfo } from '@/types/resume';
 import { useState } from 'react';

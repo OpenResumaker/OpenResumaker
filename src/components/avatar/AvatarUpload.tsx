@@ -1,7 +1,7 @@
 /**
  * 头像上传组件
  */
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import { useAvatarUpload } from '@/hooks/components/useAvatarUpload';
 import { Crop } from 'lucide-react';
 import React, { Suspense } from 'react';

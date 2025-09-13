@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { X, Save } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { type ResumePrompt } from '@/types/prompt';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
+import { Dialog, DialogContent } from '@/components/ui/base/dialog.tsx';
+import { type ResumePrompt } from '@/types/prompt.ts';
 
 interface PromptDialogProps {
   isOpen: boolean;

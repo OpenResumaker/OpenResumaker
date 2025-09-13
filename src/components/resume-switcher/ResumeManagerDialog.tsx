@@ -1,16 +1,16 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useResumeManager } from '@/hooks/useResumeManager';
-import { useFloatingMessage } from '@/hooks/useFloatingMessage';
-import type { ResumeMetadata } from '@/types/resume';
+} from '@/components/ui/base/dialog.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
+import { useResumeManager } from '@/hooks/useResumeManager.ts';
+import { useFloatingMessage } from '@/hooks/useFloatingMessage.ts';
+import type { ResumeMetadata } from '@/types/resume.ts';
 import {
   Check,
   Copy,
@@ -24,7 +24,7 @@ import {
   X,
 } from 'lucide-react';
 import { useState } from 'react';
-import { DeleteResumeConfirmDialog } from './DeleteResumeConfirmDialog';
+import { DeleteResumeConfirmDialog } from './DeleteResumeConfirmDialog.tsx';
 
 interface ResumeManagerDialogProps {
   isOpen: boolean;

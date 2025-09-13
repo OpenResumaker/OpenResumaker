@@ -1,11 +1,11 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from '@/components/ui/base/dialog.tsx';
 import { AlertTriangle, Trash2 } from 'lucide-react';
 
 interface DeleteResumeConfirmDialogProps {

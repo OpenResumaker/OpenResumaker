@@ -1,8 +1,8 @@
-import { IconPicker } from '@/components/IconPicker.tsx';
-import { Button } from '@/components/ui/button.tsx';
-import { Input } from '@/components/ui/input.tsx';
-import { Label } from '@/components/ui/label.tsx';
-import { Select } from '@/components/ui/select.tsx';
+import { IconPicker } from '@/components/ui/advanced/IconPicker.tsx';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
+import { Select } from '@/components/ui/base/select.tsx';
 
 import type { ResumeSection } from '@/types/resume.ts';
 import { useSortable } from '@dnd-kit/sortable';

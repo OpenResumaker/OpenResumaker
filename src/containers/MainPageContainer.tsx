@@ -1,14 +1,14 @@
-import { AppHeader } from '@/components/layout/AppHeader';
-import { ResumeDisplay } from '@/components/ResumeDisplay';
+import { AppHeader } from '@/components/page-layout/AppHeader';
+import { ResumeDisplay } from '@/components/section-manager/ResumeDisplay.tsx';
 import { ResumeSidebar } from '@/components/resume-switcher/ResumeSidebar.tsx';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { useEffect, useState } from 'react';
-import { ClearConfirmDialog } from '@/components/dialogs/ClearConfirmDialog';
-import { ActionButtons } from '@/components/layout/ActionButtons';
-import { AppFooter } from '@/components/layout/AppFooter';
+import { ClearConfirmDialog } from '@/components/section-manager/ClearConfirmDialog.tsx';
+import { ActionButtons } from '@/components/page-layout/ActionButtons';
+import { AppFooter } from '@/components/page-layout/AppFooter';
 import { resetResumeAtom, resumeAtom } from '@/store/resumeStore';
-import { ResumeManagerDialog } from '@/components/dialogs/ResumeManagerDialog';
-import { FloatingMessage } from '@/components/ui/floating-message.tsx';
+import { ResumeManagerDialog } from '@/components/resume-switcher/ResumeManagerDialog.tsx';
+import { FloatingMessage } from '@/components/ui/advanced/FloatingMessage.tsx';
 import { useFloatingMessage } from '@/hooks/useFloatingMessage.ts';
 
 // 移除懒加载模块管理器，现在使用独立页面

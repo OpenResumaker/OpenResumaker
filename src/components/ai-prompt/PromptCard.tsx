@@ -1,6 +1,6 @@
 import { Edit2, Trash2, Copy, Calendar, Tag } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import type { ResumePrompt } from '@/types/prompt';
+import { Button } from '@/components/ui/base/button.tsx';
+import type { ResumePrompt } from '@/types/prompt.ts';
 
 interface PromptCardProps {
   prompt: ResumePrompt;

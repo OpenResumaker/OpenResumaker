@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import {
   Dialog,
   DialogContent,
@@ -7,11 +7,11 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { IconPicker, IconRenderer } from '@/components/IconPicker';
+} from '@/components/ui/base/dialog.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
+import { Switch } from '@/components/ui/base/switch.tsx';
+import { IconPicker, IconRenderer } from '@/components/ui/advanced/IconPicker.tsx';
 import { useAtomValue, useSetAtom } from 'jotai';
 import {
   aiPlatformsAtom,
@@ -19,10 +19,10 @@ import {
   updateAIPlatformAtom,
   deleteAIPlatformAtom,
   resetAIPlatformsAtom,
-} from '@/store/aiPlatformStore';
-import type { AIPlatform } from '@/types/aiPlatform';
+} from '@/store/aiPlatformStore.ts';
+import type { AIPlatform } from '@/types/aiPlatform.ts';
 import { Plus, Edit3, Trash2, RotateCcw } from 'lucide-react';
-import { useFloatingMessage } from '@/hooks/useFloatingMessage';
+import { useFloatingMessage } from '@/hooks/useFloatingMessage.ts';
 
 interface AIPlatformManagerDialogProps {
   isOpen: boolean;

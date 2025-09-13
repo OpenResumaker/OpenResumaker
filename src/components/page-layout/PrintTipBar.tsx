@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Slider } from '@/components/ui/base/slider.tsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/base/tooltip.tsx';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { CircleQuestionMark, Printer } from 'lucide-react';
 

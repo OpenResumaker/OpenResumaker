@@ -1,10 +1,10 @@
 /**
  * 可复用的时间线项目组件
  */
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
+import { Textarea } from '@/components/ui/base/textarea.tsx';
 import type { TimelineItem as TimelineItemType } from '@/types/resume';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

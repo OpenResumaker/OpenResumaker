@@ -1,12 +1,12 @@
-import { IconPicker } from '@/components/IconPicker';
+import { IconPicker } from '@/components/ui/advanced/IconPicker.tsx';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Textarea } from '@/components/ui/textarea';
+} from '@/components/ui/base/dialog.tsx';
+import { Textarea } from '@/components/ui/base/textarea.tsx';
 import { useTextEditor } from '@/hooks/components/useTextEditor';
 
 interface TextEditorProps {

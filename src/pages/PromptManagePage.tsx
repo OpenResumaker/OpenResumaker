@@ -2,9 +2,9 @@ import { useMemo, useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
 import { Plus, Search } from 'lucide-react';
 import MiniSearch from 'minisearch';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { FloatingMessage } from '@/components/ui/floating-message';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
+import { FloatingMessage } from '@/components/ui/advanced/FloatingMessage.tsx';
 import {
   addPromptAtom,
   deletePromptAtom,
@@ -13,9 +13,9 @@ import {
   updatePromptAtom,
 } from '@/store/promptStore';
 import { type ResumePrompt } from '@/types/prompt';
-import { PromptCard } from '@/components/prompt/PromptCard';
-import { PromptDialog } from '@/components/prompt/PromptDialog';
-import { DeletePromptConfirmDialog } from '@/components/dialogs/DeletePromptConfirmDialog';
+import { PromptCard } from '@/components/ai-prompt/PromptCard.tsx';
+import { PromptDialog } from '@/components/ai-prompt/PromptDialog.tsx';
+import { DeletePromptConfirmDialog } from '@/components/ai-prompt/DeletePromptConfirmDialog.tsx';
 import { useFloatingMessage } from '@/hooks/useFloatingMessage';
 
 export const PromptManagePage = () => {

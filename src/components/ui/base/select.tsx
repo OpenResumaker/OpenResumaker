@@ -1,7 +1,7 @@
 /**
  * Select 下拉选择组件
  */
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils.ts';
 
 interface SelectOption {
   value: string;

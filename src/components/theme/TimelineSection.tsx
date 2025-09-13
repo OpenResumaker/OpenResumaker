@@ -4,13 +4,13 @@
 import { ListEditor } from '@/components/editors/ListEditor';
 import { TextEditor } from '@/components/editors/TextEditor';
 import { TimelineEditor } from '@/components/editors/TimelineEditor';
-import { IconRenderer } from '@/components/IconPicker';
+import { IconRenderer } from '@/components/ui/advanced/IconPicker.tsx';
 import {
   ListContent,
   TextContentRenderer,
   TimelineContent,
 } from '@/components/theme/TimelineContentRenderer';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import { useTimelineSection } from '@/hooks/components/useTimelineSection';
 import type { ListItem, ResumeSection, TextContent, TimelineItem } from '@/types/resume';
 import { Edit3 } from 'lucide-react';

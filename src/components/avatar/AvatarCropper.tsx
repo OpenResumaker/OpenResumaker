@@ -1,14 +1,14 @@
 /**
  * 头像裁剪组件
  */
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from '@/components/ui/base/dialog.tsx';
 import { useAvatarCropper } from '@/hooks/components/useAvatarCropper';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';

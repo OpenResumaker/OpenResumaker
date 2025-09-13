@@ -1,9 +1,9 @@
 /**
  * 基础信息编辑器 - 自动保存版本
  */
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/base/dialog.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
 import { useAutoSaveDialog } from '@/hooks/useAutoSaveDialog';
 import type { BasicInfo, CustomField } from '@/types/resume';
 import { DndContext, PointerSensor, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';

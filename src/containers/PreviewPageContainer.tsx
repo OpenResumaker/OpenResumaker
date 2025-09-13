@@ -1,6 +1,6 @@
-import { ResumeDisplay } from '@/components/ResumeDisplay';
-import { PreviewPageFooter } from '@/components/layout/PreviewPageFooter';
-import { PrintTipBar } from '@/components/layout/PrintTipBar';
+import { ResumeDisplay } from '@/components/section-manager/ResumeDisplay.tsx';
+import { PreviewPageFooter } from '@/components/page-layout/PreviewPageFooter';
+import { PrintTipBar } from '@/components/page-layout/PrintTipBar';
 import { usePreviewScale } from '@/hooks/components/usePreviewScale';
 import { resumeAtom } from '@/store/resumeStore';
 import { useAtomValue } from 'jotai';

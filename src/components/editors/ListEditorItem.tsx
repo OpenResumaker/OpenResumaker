@@ -1,8 +1,8 @@
 /**
  * 可复用的列表项组件
  */
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Textarea } from '@/components/ui/base/textarea.tsx';
 import type { ListItem as ListItemType } from '@/types/resume';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

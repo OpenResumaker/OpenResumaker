@@ -1,5 +1,5 @@
-import { ResumeDisplay } from '@/components/ResumeDisplay';
-import { Button } from '@/components/ui/button';
+import { ResumeDisplay } from '@/components/section-manager/ResumeDisplay.tsx';
+import { Button } from '@/components/ui/base/button.tsx';
 import { resumeAtom } from '@/store/resumeStore';
 import { useAtomValue } from 'jotai';
 import { Eye, ZoomIn, ZoomOut } from 'lucide-react';

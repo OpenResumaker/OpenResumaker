@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import { ChevronDown, Settings, ExternalLink, MessageSquare } from 'lucide-react';
 import { useAtomValue } from 'jotai';
-import { aiPlatformsAtom } from '@/store/aiPlatformStore';
-import { IconRenderer } from '@/components/IconPicker';
+import { aiPlatformsAtom } from '@/store/aiPlatformStore.ts';
+import { IconRenderer } from '@/components/ui/advanced/IconPicker.tsx';
 
 interface AIPlatformDropdownProps {
   onManagePlatforms: () => void;

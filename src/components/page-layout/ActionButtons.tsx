@@ -1,7 +1,7 @@
 import { Eye, FolderOpen, Settings, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { AIPlatformDropdown } from '@/components/AIPlatformDropdown';
-import { AIPlatformManagerDialog } from '@/components/dialogs/AIPlatformManagerDialog';
+import { Button } from '@/components/ui/base/button.tsx';
+import { AIPlatformDropdown } from '@/components/ai-prompt/AIPlatformDropdown.tsx';
+import { AIPlatformManagerDialog } from '@/components/ai-prompt/AIPlatformManagerDialog.tsx';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

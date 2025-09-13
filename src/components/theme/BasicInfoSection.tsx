@@ -2,7 +2,7 @@
  * 基本信息区域 - 简洁版本
  */
 import { BasicInfoEditor } from '@/components/editors';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import { useBasicInfoSection } from '@/hooks/components/useBasicInfoSection';
 import type { BasicInfo, ResumeSection } from '@/types/resume';
 import { Edit3, Mail, Phone, User } from 'lucide-react';

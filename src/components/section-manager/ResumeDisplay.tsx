@@ -1,6 +1,6 @@
-import type { Resume } from '@/types/resume';
-import { BasicInfoSection } from './theme/BasicInfoSection';
-import { TimelineSection } from './theme/TimelineSection';
+import type { Resume } from '@/types/resume.ts';
+import { BasicInfoSection } from '../theme/BasicInfoSection.tsx';
+import { TimelineSection } from '../theme/TimelineSection.tsx';
 
 interface ResumeDisplayProps {
   resume: Resume;

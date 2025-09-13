@@ -1,7 +1,7 @@
 /**
  * 文件上传按钮
  */
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/base/button.tsx';
 import { useRef } from 'react';
 
 interface FileUploadButtonProps {

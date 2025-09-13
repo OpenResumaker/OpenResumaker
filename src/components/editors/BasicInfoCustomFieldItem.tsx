@@ -1,7 +1,7 @@
-import { IconPicker } from '@/components/IconPicker';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { IconPicker } from '@/components/ui/advanced/IconPicker.tsx';
+import { Button } from '@/components/ui/base/button.tsx';
+import { Input } from '@/components/ui/base/input.tsx';
+import { Label } from '@/components/ui/base/label.tsx';
 import type { CustomField } from '@/types/resume';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

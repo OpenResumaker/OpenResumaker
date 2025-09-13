@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils.ts';
 
 interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   value?: string;
