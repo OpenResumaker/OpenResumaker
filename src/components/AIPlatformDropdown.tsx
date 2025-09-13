@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronDown, Settings, ExternalLink, MessageSquare } from 'lucide-react';
 import { useAtomValue } from 'jotai';
 import { aiPlatformsAtom } from '@/store/aiPlatformStore';
+import { IconRenderer } from '@/components/IconPicker';
 
 interface AIPlatformDropdownProps {
   onManagePlatforms: () => void;
@@ -57,7 +58,7 @@ export const AIPlatformDropdown = ({ onManagePlatforms }: AIPlatformDropdownProp
                   className="w-full px-3 py-2 text-left text-sm hover:bg-gray-100 flex items-center space-x-2 text-gray-700"
                   onClick={() => handlePlatformClick(platform.url)}
                 >
-                  <span className="text-base">{platform.icon}</span>
+                  <IconRenderer iconName={platform.icon || ''} className="h-4 w-4 text-gray-600" />
                   <span className="flex-1">{platform.name}</span>
                   <ExternalLink className="h-3 w-3 text-gray-400" />
                 </button>

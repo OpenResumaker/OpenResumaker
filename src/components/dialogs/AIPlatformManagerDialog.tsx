@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import { IconPicker, IconRenderer } from '@/components/IconPicker';
 import { useAtomValue, useSetAtom } from 'jotai';
 import {
   aiPlatformsAtom,
@@ -44,6 +46,7 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
 
   const [editingPlatform, setEditingPlatform] = useState<EditingPlatform | null>(null);
   const [isAdding, setIsAdding] = useState(false);
+  const [iconsEnabled, setIconsEnabled] = useState(true);
 
   const handleAddPlatform = () => {
     setEditingPlatform({
@@ -89,7 +92,7 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
       addPlatform({
         name: editingPlatform.name.trim(),
         url: editingPlatform.url.trim(),
-        icon: editingPlatform.icon,
+        icon: iconsEnabled ? editingPlatform.icon : '',
       });
       showSuccess('AI平台添加成功');
     } else if (editingPlatform.id) {
@@ -140,7 +143,7 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
                 className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50"
               >
                 <div className="flex items-center space-x-3">
-                  <span className="text-lg">{platform.icon}</span>
+                  <IconRenderer iconName={platform.icon || ''} className="h-5 w-5 text-gray-600" />
                   <div>
                     <div className="font-medium">{platform.name}</div>
                     <div className="text-sm text-gray-500">{platform.url}</div>
@@ -202,17 +205,47 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
                     placeholder="例如：https://chat.openai.com"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="platform-icon">图标 (emoji)</Label>
-                  <Input
-                    id="platform-icon"
-                    value={editingPlatform.icon}
-                    onChange={(e) =>
-                      setEditingPlatform({ ...editingPlatform, icon: e.target.value })
-                    }
-                    maxLength={2}
-                  />
-                </div>
+                {isAdding && (
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <Switch
+                        checked={iconsEnabled}
+                        checkStatus={iconsEnabled}
+                        onCheckedChange={setIconsEnabled}
+                        id="icons-enabled"
+                      />
+                      <Label htmlFor="icons-enabled" className="text-sm text-gray-600">
+                        使用图标
+                      </Label>
+                    </div>
+                    <div
+                      className={`transition-all duration-300 ease-in-out ${
+                        iconsEnabled
+                          ? 'opacity-100 max-h-96 overflow-visible'
+                          : 'opacity-0 max-h-0 overflow-hidden'
+                      }`}
+                    >
+                      <IconPicker
+                        value={editingPlatform.icon}
+                        onChange={(iconName) =>
+                          setEditingPlatform({ ...editingPlatform, icon: iconName })
+                        }
+                        label="图标"
+                      />
+                    </div>
+                  </div>
+                )}
+                {!isAdding && (
+                  <div>
+                    <IconPicker
+                      value={editingPlatform.icon}
+                      onChange={(iconName) =>
+                        setEditingPlatform({ ...editingPlatform, icon: iconName })
+                      }
+                      label="图标"
+                    />
+                  </div>
+                )}
                 <div className="flex space-x-2">
                   <Button onClick={handleSavePlatform} size="sm">
                     保存
