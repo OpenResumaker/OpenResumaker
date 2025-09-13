@@ -1,8 +1,8 @@
 import { ResumeDisplay } from '@/components/section-manager/ResumeDisplay.tsx';
-import { PreviewPageFooter } from '@/components/page-layout/PreviewPageFooter';
-import { PrintTipBar } from '@/components/page-layout/PrintTipBar';
-import { usePreviewScale } from '@/hooks/components/usePreviewScale';
-import { resumeAtom } from '@/store/resumeStore';
+import { PreviewPageFooter } from '@/components/page-layout/PreviewPageFooter.tsx';
+import { PrintTipBar } from '@/components/page-layout/PrintTipBar.tsx';
+import { usePreviewScale } from '@/hooks/components/usePreviewScale.ts';
+import { resumeAtom } from '@/store/resumeStore.ts';
 import { useAtomValue } from 'jotai';
 
 export const PreviewPageContainer = () => {

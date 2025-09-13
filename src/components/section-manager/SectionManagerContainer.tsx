@@ -1,7 +1,7 @@
-import { AppHeader } from '@/components/page-layout/AppHeader';
-import { AppFooter } from '@/components/page-layout/AppFooter';
-import { SectionEditorPanel } from '@/components/section-manager/SectionEditorPanel';
-import { ResumePreviewPanel } from '@/components/section-manager/ResumePreviewPanel';
+import { AppHeader } from '@/components/page-layout/AppHeader.tsx';
+import { AppFooter } from '@/components/page-layout/AppFooter.tsx';
+import { SectionEditorPanel } from '@/components/section-manager/SectionEditorPanel.tsx';
+import { ResumePreviewPanel } from '@/components/section-manager/ResumePreviewPanel.tsx';
 import { Button } from '@/components/ui/base/button.tsx';
 import { ArrowLeft, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';

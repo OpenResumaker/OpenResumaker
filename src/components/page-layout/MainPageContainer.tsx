@@ -1,12 +1,12 @@
-import { AppHeader } from '@/components/page-layout/AppHeader';
+import { AppHeader } from '@/components/page-layout/AppHeader.tsx';
 import { ResumeDisplay } from '@/components/section-manager/ResumeDisplay.tsx';
 import { ResumeSidebar } from '@/components/resume-switcher/ResumeSidebar.tsx';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { useEffect, useState } from 'react';
 import { ClearConfirmDialog } from '@/components/section-manager/ClearConfirmDialog.tsx';
-import { ActionButtons } from '@/components/page-layout/ActionButtons';
-import { AppFooter } from '@/components/page-layout/AppFooter';
-import { resetResumeAtom, resumeAtom } from '@/store/resumeStore';
+import { ActionButtons } from '@/components/page-layout/ActionButtons.tsx';
+import { AppFooter } from '@/components/page-layout/AppFooter.tsx';
+import { resetResumeAtom, resumeAtom } from '@/store/resumeStore.ts';
 import { ResumeManagerDialog } from '@/components/resume-switcher/ResumeManagerDialog.tsx';
 import { FloatingMessage } from '@/components/ui/advanced/FloatingMessage.tsx';
 import { useFloatingMessage } from '@/hooks/useFloatingMessage.ts';

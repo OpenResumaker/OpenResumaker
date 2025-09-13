@@ -1,4 +1,4 @@
-import { MainPageContainer } from '@/containers/MainPageContainer';
+import { MainPageContainer } from '@/components/page-layout/MainPageContainer.tsx';
 
 export const MainPage = () => {
   return <MainPageContainer />;
