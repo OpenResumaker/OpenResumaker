@@ -4,7 +4,7 @@
 
 纯前端项目，没有登录注册、信息收集，也没有收费项目。
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/badge/license-GPL-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)
 ![React](https://img.shields.io/badge/React-19.1-blue.svg)
 ![Vite](https://img.shields.io/badge/Vite-7.0-646CFF.svg)
