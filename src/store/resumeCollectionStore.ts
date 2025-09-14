@@ -242,6 +242,12 @@ export const deleteResumeAtom = atom(null, (get, set, resumeId: string) => {
   const { ...remainingResumes } = collection.resumes;
   const { ...remainingMetadata } = collection.metadata;
 
+  // 删除目标简历
+  if (remainingResumes[resumeId]) {
+    delete remainingResumes[resumeId];
+    delete remainingMetadata[resumeId];
+  }
+
   // 如果删除的是当前简历，切换到第一个可用的简历
   let newCurrentId = collection.currentResumeId;
   if (collection.currentResumeId === resumeId) {
@@ -256,6 +262,46 @@ export const deleteResumeAtom = atom(null, (get, set, resumeId: string) => {
 
   return true;
 });
+
+/*
+export const batchDeleteResumesAtom = atom(null, (get, set, resumeIds: string[]) => {
+  const collection = get(resumeCollectionAtom);
+
+  // 不能删除所有简历，至少要保留一个
+  if (resumeIds.length >= Object.keys(collection.resumes).length) {
+    return false;
+  }
+
+  // 过滤出要删除的简历
+  const resumesToDelete = resumeIds.filter((id) => collection.resumes[id]);
+  if (resumesToDelete.length === 0) {
+    return false;
+  }
+
+  // 创建新的简历和元数据对象，排除要删除的简历
+  const newResumes: Record<string, Resume> = { ...collection.resumes };
+  const newMetadata: Record<string, ResumeMetadata> = { ...collection.metadata };
+
+  resumesToDelete.forEach((id) => {
+    delete newResumes[id];
+    delete newMetadata[id];
+  });
+
+  // 如果当前简历被删除了，切换到第一个可用的简历
+  let newCurrentId = collection.currentResumeId;
+  if (resumesToDelete.includes(collection.currentResumeId)) {
+    newCurrentId = Object.keys(newResumes)[0];
+  }
+
+  set(resumeCollectionAtom, {
+    currentResumeId: newCurrentId,
+    resumes: newResumes,
+    metadata: newMetadata,
+  });
+
+  return true;
+});
+ */
 
 // 重命名简历
 export const renameResumeAtom = atom(
