@@ -36,7 +36,7 @@ export const AIPlatformDropdown = ({ onManagePlatforms }: AIPlatformDropdownProp
         onClick={() => setIsOpen(!isOpen)}
         className="text-gray-500 hover:text-gray-700 hover:bg-gray-100 text-xs px-2 py-1 h-auto"
       >
-        <span>常用AI工具平台</span>
+        <span>常用工具平台</span>
         <ChevronDown className="h-3 w-3 ml-1" />
       </Button>
 
