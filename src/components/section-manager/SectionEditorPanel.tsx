@@ -94,7 +94,7 @@ export const SectionEditorPanel = () => {
 
           {/* 添加新模块 */}
           {managedSections.length > 0 && (
-            <div className="border-t pt-4 md:pt-6">
+            <div className="border-t py-4 md:pt-6">
               <div className="flex items-center justify-between">
                 <Label className="font-medium text-gray-700 text-sm">添加新模块</Label>
                 <Button

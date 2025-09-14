@@ -4,7 +4,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/base/dialog.tsx';
@@ -128,9 +127,9 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>管理AI平台</DialogTitle>
+          <DialogTitle>管理工具平台</DialogTitle>
           <DialogDescription>
-            添加、编辑或删除常用的AI工具平台。点击平台可以在新标签页中打开。
+            添加、编辑或删除常用的AI/工具平台。点击平台可以在新标签页中打开。
           </DialogDescription>
         </DialogHeader>
 
@@ -150,11 +149,7 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => handleEditPlatform(platform)}
-                  >
+                  <Button variant="ghost" size="sm" onClick={() => handleEditPlatform(platform)}>
                     <Edit3 className="h-4 w-4" />
                   </Button>
                   <Button
@@ -170,18 +165,14 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
             ))}
 
             {platforms.length === 0 && (
-              <div className="text-center py-8 text-gray-500">
-                暂无AI平台，点击下方按钮添加
-              </div>
+              <div className="text-center py-8 text-gray-500">暂无AI平台，点击下方按钮添加</div>
             )}
           </div>
 
           {/* 编辑表单 */}
           {editingPlatform && (
             <div className="p-4 border border-blue-200 rounded-lg bg-blue-50">
-              <h4 className="font-medium mb-3">
-                {isAdding ? '添加新平台' : '编辑平台'}
-              </h4>
+              <h4 className="font-medium mb-3">{isAdding ? '添加新平台' : '编辑平台'}</h4>
               <div className="space-y-3">
                 <div>
                   <Label htmlFor="platform-name">平台名称</Label>
@@ -250,11 +241,7 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
                   <Button onClick={handleSavePlatform} size="sm">
                     保存
                   </Button>
-                  <Button
-                    variant="outline"
-                    onClick={handleCancelEdit}
-                    size="sm"
-                  >
+                  <Button variant="outline" onClick={handleCancelEdit} size="sm">
                     取消
                   </Button>
                 </div>
@@ -284,12 +271,6 @@ export const AIPlatformManagerDialog = ({ isOpen, onClose }: AIPlatformManagerDi
             </div>
           )}
         </div>
-
-        <DialogFooter>
-          <Button variant="outline" onClick={onClose}>
-            关闭
-          </Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

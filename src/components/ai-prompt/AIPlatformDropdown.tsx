@@ -81,7 +81,7 @@ export const AIPlatformDropdown = ({ onManagePlatforms }: AIPlatformDropdownProp
                 onClick={handleManageClick}
               >
                 <Settings className="h-4 w-4" />
-                <span>管理AI平台</span>
+                <span>管理工具平台</span>
               </button>
 
               {/* 提示词管理按钮 */}
