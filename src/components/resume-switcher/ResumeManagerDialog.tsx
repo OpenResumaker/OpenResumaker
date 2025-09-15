@@ -438,7 +438,7 @@ export const ResumeManagerDialog = ({ isOpen, onClose }: ResumeManagerDialogProp
           )}
 
           {/* 简历列表 */}
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1">
             <div className="space-y-2 p-1">
               {resumeList.map((resume) => (
                 <div
