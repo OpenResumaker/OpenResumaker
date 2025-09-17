@@ -9,7 +9,10 @@
 ![React](https://img.shields.io/badge/React-18.3-blue.svg)
 ![Vite](https://img.shields.io/badge/Vite-7.0-646CFF.svg)
 
-## 🚀 快速开始
+## 快速启动（小白推荐）
+见release部分的压缩包。该压缩包由一键启动项目 [OpenResumakerStartup](https://github.com/OpenResumaker/OpenResumakerStartup) 打包而来。
+
+## 开发部署
 
 ### 环境要求
 - Node.js >= 18.0.0
