@@ -31,7 +31,8 @@ export const ResumePreviewPanel = () => {
   };
 
   const handleFullPreview = () => {
-    window.open('/preview', '_blank');
+    const url = `${window.location.origin}${window.location.pathname}#/preview`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (

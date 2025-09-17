@@ -1,6 +1,6 @@
 import { Provider } from 'jotai';
 import React, { Suspense } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { MainPage } from './pages/MainPage';
 
 // 懒加载预览页面（无loading，包太小会一闪而过）

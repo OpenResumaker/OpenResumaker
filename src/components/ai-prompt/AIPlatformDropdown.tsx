@@ -24,7 +24,8 @@ export const AIPlatformDropdown = ({ onManagePlatforms }: AIPlatformDropdownProp
   };
 
   const handlePromptManageClick = () => {
-    window.open('/prompts', '_blank', 'noopener,noreferrer');
+    const url = `${window.location.origin}${window.location.pathname}#/prompts`;
+    window.open(url, '_blank', 'noopener,noreferrer');
     setIsOpen(false);
   };
 
