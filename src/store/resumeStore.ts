@@ -130,3 +130,103 @@ export const getBasicSectionAtom = atom((get) => {
   const resume = get(resumeAtom);
   return resume.sections.find((section) => section.type === 'basic');
 });
+
+/**
+ * 更新页面设置
+ */
+export const updatePageSettingsAtom = atom(
+  null,
+  (get, set, pageSettings: { enableMultiPage: boolean; totalPages: number }) => {
+    const resume = get(resumeAtom);
+    set(resumeAtom, { ...resume, pageSettings });
+  }
+);
+
+/**
+ * 添加新页面
+ */
+export const addPageAtom = atom(null, (get, set) => {
+  const resume = get(resumeAtom);
+  const currentTotalPages = resume.pageSettings?.totalPages || 1;
+  const newTotalPages = currentTotalPages + 1;
+  
+  set(resumeAtom, {
+    ...resume,
+    pageSettings: {
+      enableMultiPage: newTotalPages > 1,
+      totalPages: newTotalPages,
+    },
+  });
+  
+  return newTotalPages;
+});
+
+/**
+ * 删除页面（将该页面的模块移动到第一页）
+ */
+export const removePageAtom = atom(null, (get, set, pageNumber: number) => {
+  const resume = get(resumeAtom);
+  
+  // 不能删除第一页
+  if (pageNumber === 1) return false;
+  
+  const currentTotalPages = resume.pageSettings?.totalPages || 1;
+  if (pageNumber > currentTotalPages) return false;
+  
+  // 将要删除页面的模块移动到第一页
+  const updatedSections = resume.sections.map((section) => {
+    if (section.pageNumber === pageNumber) {
+      return { ...section, pageNumber: 1 };
+    }
+    // 调整后续页面的页码
+    if (section.pageNumber && section.pageNumber > pageNumber) {
+      return { ...section, pageNumber: section.pageNumber - 1 };
+    }
+    return section;
+  });
+  
+  const newTotalPages = currentTotalPages - 1;
+  
+  set(resumeAtom, {
+    ...resume,
+    sections: updatedSections,
+    pageSettings: {
+      enableMultiPage: newTotalPages > 1,
+      totalPages: newTotalPages,
+    },
+  });
+  
+  return true;
+});
+
+/**
+ * 批量更新多个模块的页面分配
+ */
+export const updateMultipleSectionsPageAtom = atom(
+  null,
+  (get, set, updates: Array<{ sectionId: string; pageNumber: number }>) => {
+    const resume = get(resumeAtom);
+    const updatedSections = resume.sections.map((section) => {
+      const update = updates.find((u) => u.sectionId === section.id);
+      if (update) {
+        return { ...section, pageNumber: update.pageNumber };
+      }
+      return section;
+    });
+    set(resumeAtom, { ...resume, sections: updatedSections });
+  }
+);
+
+/**
+ * 获取指定页面的模块列表
+ */
+export const getSectionsByPageAtom = atom((get) => {
+  return (pageNumber: number) => {
+    const resume = get(resumeAtom);
+    return resume.sections
+      .filter((section) => section.type !== 'basic')
+      .filter((section) => (section.pageNumber || 1) === pageNumber)
+      .filter((section) => section.visible)
+      .sort((a, b) => a.order - b.order);
+  };
+});

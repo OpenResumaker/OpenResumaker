@@ -3,123 +3,205 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96%;
+        --secondary-foreground: 222.2 84% 4.9%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96%;
+        --accent-foreground: 222.2 84% 4.9%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+        --radius: 0.5rem;
+    }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+    .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+    }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
 }
 
 /* 响应式布局优化 */
 @media (max-width: 1023px) {
-  /* 上下布局时的优化 */
-  .vertical-layout-preview {
-    font-size: 0.9em;
-  }
-  
-  /* 触摸优化 */
-  .touch-target {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* 滚动优化 */
-  .mobile-scroll {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-  }
-  
-  /* 防止缩放 */
-  .no-zoom {
-    touch-action: manipulation;
-  }
-  
-  /* 上下布局时的分隔线 */
-  .vertical-divider {
-    border-bottom: 1px solid #e5e7eb;
-    border-right: none;
-  }
+    /* 上下布局时的优化 */
+    .vertical-layout-preview {
+        font-size: 0.9em;
+    }
+
+    /* 触摸优化 */
+    .touch-target {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* 滚动优化 */
+    .mobile-scroll {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+
+    /* 防止缩放 */
+    .no-zoom {
+        touch-action: manipulation;
+    }
+
+    /* 上下布局时的分隔线 */
+    .vertical-divider {
+        border-bottom: 1px solid #e5e7eb;
+        border-right: none;
+    }
 }
 
 /* 平板和小屏幕优化 */
 @media (max-width: 768px) {
-  .vertical-layout-preview {
-    font-size: 0.85em;
-  }
+    .vertical-layout-preview {
+        font-size: 0.85em;
+    }
 }
 
 /* 小屏幕手机优化 */
 @media (max-width: 480px) {
-  .vertical-layout-preview {
-    font-size: 0.8em;
-  }
-  
-  /* 更紧凑的间距 */
-  .compact-mobile {
-    padding: 0.5rem;
-    margin: 0.25rem;
-  }
+    .vertical-layout-preview {
+        font-size: 0.8em;
+    }
+
+    /* 更紧凑的间距 */
+    .compact-mobile {
+        padding: 0.5rem;
+        margin: 0.25rem;
+    }
+}
+
+/* 多页模式的页面容器样式 */
+.page-container {
+    position: relative;
+    min-height: 297mm; /* A4 页面高度 */
+    max-width: 210mm;
+    background: white;
+}
+
+/* 页面间的视觉分隔效果 */
+.page-separator {
+    background: linear-gradient(90deg, transparent 0%, #e5e7eb 20%, #d1d5db 50%, #e5e7eb 80%, transparent 100%);
+    height: 2px;
+    margin: 2rem 0;
+}
+
+/* 页面指示器样式 */
+.page-indicator {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .page-container {
+        min-height: auto;
+        border-radius: 8px;
+        margin: 0 4px;
+    }
+
+    .page-indicator {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.75rem;
+    }
+
+    .page-container:hover {
+        transform: none; /* 移动端禁用悬停效果 */
+    }
 }
 
 @media print {
-  @page {
-    margin: 1cm;
-    size: A4 portrait;
-  }
-  .section,
-  table,
-  ul {
-    page-break-inside: avoid;
-  }
-  h1 {
-    page-break-after: avoid;
-  }
+    @page {
+        margin: 1cm;
+        size: A4 portrait;
+    }
+
+    /* 强制分页 */
+    .print-page {
+        page-break-after: always;
+        page-break-inside: avoid;
+        min-height: 100vh;
+        height: auto;
+        break-after: page;
+        break-inside: avoid;
+    }
+
+    /* 最后一页不需要分页 */
+    .print-page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+    }
+
+    /* 避免内容被分割 */
+    .section,
+    table,
+    ul {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    /* 隐藏不必要的元素 */
+    .no-print {
+        display: none !important;
+    }
+
+    /* 确保打印时的完整页面高度 */
+    html, body {
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* 打印时的页面容器 */
+    .print-container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
 }

@@ -26,7 +26,7 @@ export const PreviewPageContainer = () => {
         resume={resume}
         isEditable={false}
         scale={scale}
-        className="max-w-4xl mx-auto p-4 bg-white min-h-screen print:p-2 print:max-w-none"
+        className="flex justify-center mx-auto p-4 bg-white min-h-screen print:p-2"
       />
 
       <PreviewPageFooter />

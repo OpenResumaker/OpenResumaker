@@ -8,6 +8,10 @@ export const initialResume: Resume = {
   title: '我的简历',
   template: 'default',
   layout: 'top-bottom',
+  pageSettings: {
+    enableMultiPage: false,
+    totalPages: 1,
+  },
   sections: [
     {
       id: 'basic-info',
@@ -204,6 +208,10 @@ export const createResumeAtom = atom(null, (get, set, title: string, description
     ...initialResume,
     id: newId,
     title,
+    pageSettings: {
+      enableMultiPage: false,
+      totalPages: 1,
+    },
   };
 
   const newMetadata: ResumeMetadata = {

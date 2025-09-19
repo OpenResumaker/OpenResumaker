@@ -18,7 +18,7 @@ export const PrintTipBar = ({ onPrint, scale, onScaleChange }: PrintTipBarProps)
     <>
       <div className="bg-blue-600 text-white p-3 text-center print:hidden">
         <div className="flex items-center justify-center space-x-4">
-          <span className="text-sm">
+          <span className="text-sm hidden md:inline-block">
             {tip}
             {shortcut && <span className="ml-2 text-blue-200">({shortcut})</span>}
           </span>

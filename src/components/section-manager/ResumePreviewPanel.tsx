@@ -101,9 +101,9 @@ export const ResumePreviewPanel = () => {
       </div>
 
       {/* 预览内容 */}
-      <div className="flex-1 overflow-auto bg-gray-50 p-3 md:p-6">
+      <div className="flex-1 overflow-auto bg-gradient-to-br from-gray-50 to-gray-100 p-3 md:p-6">
         <div className="flex justify-start md:justify-center min-h-full md:min-h-0">
-          <div className="bg-white w-full md:rounded-lg md:shadow-lg overflow-hidden">
+          <div className="w-full overflow-hidden">
             <ResumeDisplay
               resume={resume}
               isEditable={false}

@@ -49,6 +49,7 @@ export interface ResumeSection {
   editorType?: 'timeline' | 'list' | 'text';
   visible: boolean;
   order: number;
+  pageNumber?: number;
   dateFormat?: 'zh-full' | 'zh-month' | 'dash-full' | 'dash-month' | 'dot-full' | 'dot-month';
   data: BasicInfo | TimelineItem[] | ListItem[] | TextContent | Record<string, unknown>;
 }
@@ -58,7 +59,11 @@ export interface Resume {
   title: string;
   sections: ResumeSection[];
   template: string;
-  layout: 'side-by-side' | 'top-bottom'; // 新增布局类型
+  layout: 'side-by-side' | 'top-bottom';
+  pageSettings?: {
+    enableMultiPage: boolean;
+    totalPages: number;
+  };
 }
 
 export interface IconOption {

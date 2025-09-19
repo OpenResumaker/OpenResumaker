@@ -70,7 +70,7 @@ export const MainPageContainer = () => {
 
           {/* 主内容区域 */}
           <main className="flex-1 overflow-hidden">
-            <div className="max-w-6xl mx-auto p-4">
+            <div className="flex justify-center mx-auto p-4 pb-9">
               <ResumeDisplay
                 resume={resume}
                 isEditable={true}
