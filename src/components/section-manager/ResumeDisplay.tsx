@@ -50,7 +50,7 @@ const SinglePageResume = ({
 
   return (
     <div
-      className="max-w-4xl mx-auto bg-white print:shadow-none print:max-w-none"
+      className="max-w-[210mm] mx-auto bg-white print:shadow-none print:max-w-none"
       style={{
         transform: `scale(${scale / 100})`,
         transformOrigin: 'top center',
