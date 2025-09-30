@@ -4,10 +4,10 @@
 import { Button } from '@/components/ui/base/button.tsx';
 import { Label } from '@/components/ui/base/label.tsx';
 import { useAutoSaveDialog } from '@/hooks/useAutoSaveDialog';
-import type { BasicInfo, CustomField } from '@/types/resume';
+import type { BasicInfo, BasicInfoLayout, CustomField } from '@/types/resume';
 import { DndContext, PointerSensor, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { GripVertical, Plus } from 'lucide-react';
+import { AlignCenter, AlignLeft, AlignRight, GripVertical, LayoutGrid, Plus } from 'lucide-react';
 import { useState } from 'react';
 import { AvatarUpload } from '../avatar/AvatarUpload';
 import { BasicInfoCustomFieldItem } from './BasicInfoCustomFieldItem';
@@ -121,6 +121,46 @@ export const BasicInfoEditorPanel = ({
     { id: 'email', label: '邮箱', type: 'email', placeholder: 'your.email@example.com' },
   ] as const;
 
+  // 布局选项
+  const layoutOptions: Array<{
+    value: BasicInfoLayout;
+    label: string;
+    icon: typeof AlignCenter;
+    description: string;
+  }> = [
+    {
+      value: 'center',
+      label: '居中布局',
+      icon: AlignCenter,
+      description: '姓名居中，信息与头像左右排列',
+    },
+    {
+      value: 'left',
+      label: '左对齐布局',
+      icon: AlignLeft,
+      description: '头像在左，信息在右',
+    },
+    {
+      value: 'right',
+      label: '右对齐布局',
+      icon: AlignRight,
+      description: '信息在左，头像在右',
+    },
+    {
+      value: 'classic',
+      label: '经典布局',
+      icon: LayoutGrid,
+      description: '紧凑型，信息密集',
+    },
+  ];
+
+  const handleLayoutChange = (layout: BasicInfoLayout) => {
+    setFormData((prev) => ({
+      ...prev,
+      layout,
+    }));
+  };
+
   return (
     <div className="h-full flex flex-col">
       {/* 头部 */}
@@ -138,6 +178,54 @@ export const BasicInfoEditorPanel = ({
       {/* 编辑内容 */}
       <div className="flex-1 overflow-y-auto p-6">
         <div className="space-y-6">
+          {/* 布局选择器 */}
+          <div className="space-y-3">
+            <Label>布局样式</Label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {layoutOptions.map((option) => {
+                const IconComponent = option.icon;
+                const isSelected = (formData.layout || 'center') === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    onClick={() => handleLayoutChange(option.value)}
+                    className={`
+                      group relative flex flex-col items-start p-4 rounded-lg border-2 transition-all
+                      ${
+                        isSelected
+                          ? 'border-blue-500 bg-blue-50 shadow-sm'
+                          : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'
+                      }
+                    `}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <IconComponent
+                        className={`h-5 w-5 ${isSelected ? 'text-blue-600' : 'text-gray-600'}`}
+                      />
+                      <span
+                        className={`font-medium text-sm ${
+                          isSelected ? 'text-blue-900' : 'text-gray-900'
+                        }`}
+                      >
+                        {option.label}
+                      </span>
+                    </div>
+                    <p
+                      className={`text-xs ${
+                        isSelected ? 'text-blue-700' : 'text-gray-500'
+                      }`}
+                    >
+                      {option.description}
+                    </p>
+                    {isSelected && (
+                      <div className="absolute top-2 right-2 h-2 w-2 rounded-full bg-blue-500"></div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="space-y-2">
             <Label>头像</Label>
             <AvatarUpload currentAvatar={formData.avatar} onAvatarChange={handleAvatarChange} />

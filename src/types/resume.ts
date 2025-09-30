@@ -8,6 +8,9 @@ export interface CustomField {
   iconName: string;
 }
 
+// 基础信息布局类型
+export type BasicInfoLayout = 'center' | 'left' | 'right' | 'classic';
+
 export interface BasicInfo {
   avatar?: string;
   name: string;
@@ -18,6 +21,7 @@ export interface BasicInfo {
   location?: string;
   website?: string;
   customFields?: CustomField[];
+  layout?: BasicInfoLayout; // 布局样式
 }
 
 export interface TimelineItem {
