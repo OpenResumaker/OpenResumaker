@@ -5,6 +5,8 @@ import { useResumeEditor } from '@/hooks/components/useResumeEditor';
 import type { TimelineItem } from '@/types/resume';
 import type { ResumeSection } from '@/types/resume';
 import type { DateFormat } from '@/lib/dateUtils';
+import { useAtomValue } from 'jotai';
+import { resumeAtom } from '@/store/resumeStore';
 import { EditorContainer } from './EditorContainer';
 import { EditorPreviewPanel } from './EditorPreviewPanel';
 import { TimelineEditorPanel } from './TimelineEditorPanel';
@@ -19,6 +21,7 @@ export const TimelineEditorContainer = ({
   onBack,
 }: TimelineEditorContainerProps) => {
   const { handleTimelineSave } = useResumeEditor(section.id);
+  const resume = useAtomValue(resumeAtom);
 
   const handleSave = (data: TimelineItem[], iconName?: string, dateFormat?: DateFormat) => {
     handleTimelineSave(data, iconName, dateFormat);
@@ -26,7 +29,7 @@ export const TimelineEditorContainer = ({
 
   return (
     <EditorContainer
-      title={`编辑${section.title}`}
+      title={`编辑${section.title} - ${resume.title}`}
       onBack={onBack}
       editorPanel={
         <TimelineEditorPanel

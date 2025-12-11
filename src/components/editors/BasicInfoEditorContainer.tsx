@@ -3,6 +3,8 @@
  */
 import { useResumeEditor } from '@/hooks/components/useResumeEditor';
 import type { BasicInfo } from '@/types/resume';
+import { useAtomValue } from 'jotai';
+import { resumeAtom } from '@/store/resumeStore';
 import { EditorContainer } from './EditorContainer';
 import { EditorPreviewPanel } from './EditorPreviewPanel';
 import { BasicInfoEditorPanel } from './BasicInfoEditorPanel';
@@ -19,6 +21,7 @@ export const BasicInfoEditorContainer = ({
   onBack,
 }: BasicInfoEditorContainerProps) => {
   const { handleBasicInfoSave } = useResumeEditor(sectionId);
+  const resume = useAtomValue(resumeAtom);
 
   const handleSave = (data: BasicInfo) => {
     handleBasicInfoSave(data);
@@ -26,7 +29,7 @@ export const BasicInfoEditorContainer = ({
 
   return (
     <EditorContainer
-      title="编辑基本信息"
+      title={`编辑基本信息 - ${resume.title}`}
       onBack={onBack}
       editorPanel={
         <BasicInfoEditorPanel

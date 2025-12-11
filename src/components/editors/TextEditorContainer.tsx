@@ -4,6 +4,8 @@
 import { useResumeEditor } from '@/hooks/components/useResumeEditor';
 import type { TextContent } from '@/types/resume';
 import type { ResumeSection } from '@/types/resume';
+import { useAtomValue } from 'jotai';
+import { resumeAtom } from '@/store/resumeStore';
 import { EditorContainer } from './EditorContainer';
 import { EditorPreviewPanel } from './EditorPreviewPanel';
 import { TextEditorPanel } from './TextEditorPanel';
@@ -18,6 +20,7 @@ export const TextEditorContainer = ({
   onBack,
 }: TextEditorContainerProps) => {
   const { handleTextSave } = useResumeEditor(section.id);
+  const resume = useAtomValue(resumeAtom);
 
   const handleSave = (data: TextContent, iconName?: string) => {
     handleTextSave(data, iconName);
@@ -25,7 +28,7 @@ export const TextEditorContainer = ({
 
   return (
     <EditorContainer
-      title={`编辑${section.title}`}
+      title={`编辑${section.title} - ${resume.title}`}
       onBack={onBack}
       editorPanel={
         <TextEditorPanel
